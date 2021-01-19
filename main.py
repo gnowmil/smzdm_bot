@@ -73,11 +73,11 @@ if __name__ == '__main__':
     sb.load_cookie_str(cookies)
     res = sb.checkin()
     print(res)
-    # 增加错误判断
-    if res['error_code'] == 0
-        # 处理输出结果
+    #增加错误判断
+    if res['error_code'] == 0:
+        #处理输出结果
         res=res['data']
-        info = '目前积分：%s，经验值：%s，金币：%s，卡券：%s，威望：%s，等级：%s，已经签到：%s天' % (res['point'], res['exp'], res['gold'], res['card'], res['prestige'], res['rank'],res['continue_checkin_days'])
+        info = '你已连接签到：%s天：\n等级：%s\n目前积分：%s\n经验值：%s\n金币：%s\n卡券：%s\n威望：%s' % (res['continue_checkin_days'], res['rank'], res['point'], res['exp'], res['gold'], res['cards'], res['prestige'])
         print(info)
         
     else:
