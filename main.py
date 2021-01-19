@@ -48,7 +48,7 @@ class SMZDM_Bot(object):
 
 
 
-
+"""
 if __name__ == '__main__':
     sb = SMZDM_Bot()
     # sb.load_cookie_str(config.TEST_COOKIE)
@@ -62,5 +62,24 @@ if __name__ == '__main__':
         print('检测到 SCKEY， 准备推送')
         push_to_wechat(text = '什么值得买每日签到',
                         desp = str(res),
+                        secretKey = SERVERCHAN_SECRETKEY)
+    print('代码完毕')
+ """
+
+if __name__ == '__main__':
+    sb = SMZDM_Bot()
+    # sb.load_cookie_str(config.TEST_COOKIE)
+    cookies = os.environ["COOKIES"]
+    sb.load_cookie_str(cookies)
+    res = sb.checkin()
+    print(res)
+    info = '%s ：%s 你目前积分：%s，经验值：%s，金币：%s，碎银子：%s，威望：%s，等级：%s，已经签到：%s天' % (res['sys_date'], res['nickname'], res['point'], res['exp'], res['gold'], res['silver'], res['prestige'], res['level'],res['checkin']['daily_checkin_num'])
+    print(info)
+    SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
+    print('sc_key: ', SERVERCHAN_SECRETKEY)
+    if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
+        print('检测到 SCKEY， 准备推送')
+        push_to_wechat(text = '什么值得买每日签到',
+                        desp = str(info),
                         secretKey = SERVERCHAN_SECRETKEY)
     print('代码完毕')
