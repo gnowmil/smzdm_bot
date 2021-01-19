@@ -77,7 +77,7 @@ if __name__ == '__main__':
     if res['error_code'] == 0:
         #处理输出结果
         res=res['data']
-        info = '你已连接签到：%s天：\n等级：%s\n目前积分：%s\n经验值：%s\n金币：%s\n卡券：%s\n威望：%s' % (res['continue_checkin_days'], res['rank'], res['point'], res['exp'], res['gold'], res['cards'], res['prestige'])
+        info = '你已连接签到%s天：\n等级：%s\n目前积分：%s\n经验值：%s\n金币：%s\n卡券：%s\n威望：%s' % (res['continue_checkin_days'], res['rank'], res['point'], res['exp'], res['gold'], res['cards'], res['prestige'])
         print(info)
         
     else:
