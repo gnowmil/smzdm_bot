@@ -74,7 +74,7 @@ if __name__ == '__main__':
     res = sb.checkin()
     print(res)
     # 增加错误判断
-    if res['error_code' == '0']
+    if res['error_code'] == 0
         # 处理输出结果
         res=res['data']
         info = '目前积分：%s，经验值：%s，金币：%s，卡券：%s，威望：%s，等级：%s，已经签到：%s天' % (res['point'], res['exp'], res['gold'], res['card'], res['prestige'], res['rank'],res['continue_checkin_days'])
