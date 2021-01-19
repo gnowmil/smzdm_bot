@@ -73,13 +73,20 @@ if __name__ == '__main__':
     sb.load_cookie_str(cookies)
     res = sb.checkin()
     print(res)
-    info = '目前积分：%s，经验值：%s，金币：%s，卡券：%s，威望：%s，等级：%s，已经签到：%s天' % (res['point'], res['exp'], res['gold'], res['card'], res['prestige'], res['rank'],res['continue_checkin_days'])
-    print(info)
+    # 增加错误判断
+    if res['error_code'=0]
+        # 处理输出结果
+        res=res['data']
+        info = '目前积分：%s，经验值：%s，金币：%s，卡券：%s，威望：%s，等级：%s，已经签到：%s天' % (res['point'], res['exp'], res['gold'], res['card'], res['prestige'], res['rank'],res['continue_checkin_days'])
+        print(info)
+        
+    else:
+        info='出现错误：%s' % (res['error_msg'])
     SERVERCHAN_SECRETKEY = os.environ["SERVERCHAN_SECRETKEY"]
     print('sc_key: ', SERVERCHAN_SECRETKEY)
     if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
         print('检测到 SCKEY， 准备推送')
         push_to_wechat(text = '什么值得买每日签到',
-                        desp = str(info),
-                        secretKey = SERVERCHAN_SECRETKEY)
+                       desp = str(info),
+                       secretKey = SERVERCHAN_SECRETKEY)
     print('代码完毕')
